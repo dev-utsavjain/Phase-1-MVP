@@ -5,3 +5,15 @@ venv/
 # Environment variables
 .env
 .env.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Alembic compiled files (safe to ignore)
+alembic/__pycache__/
+
+# OS
+.DS_Store

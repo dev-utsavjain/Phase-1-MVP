@@ -1,8 +1,10 @@
+# FastAPI 
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.database import engine
-from app.models import Base
-from app.api.v1 import auth, tasks, calendar, reminders, integrations
+
+from app.core.database import engine, Base
+from app.api import auth, tasks, google_sync
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -10,25 +12,31 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title="Unified Inbox API",
     version="1.0.0",
-    docs_url="/api/docs"
+    description="Minimal MVP - Google Calendar & Gmail Integration"
 )
 
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React frontend
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
-app.include_router(tasks.router, prefix="/api/v1/tasks", tags=["tasks"])
-app.include_router(calendar.router, prefix="/api/v1/calendar", tags=["calendar"])
-app.include_router(reminders.router, prefix="/api/v1/reminders", tags=["reminders"])
-app.include_router(integrations.router, prefix="/api/v1/integrations", tags=["integrations"])
+# Routes
+app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(tasks.router, prefix="/api/tasks", tags=["Tasks"])
+app.include_router(google_sync.router, prefix="/api/google", tags=["Google Sync"])
 
 @app.get("/")
 def root():
-    return {"message": "Unified Inbox API", "status": "running"}
+    return {
+        "message": "Unified Inbox API - Minimal MVP",
+        "status": "running",
+        "docs": "/docs"
+    }
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}

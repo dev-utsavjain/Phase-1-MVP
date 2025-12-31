@@ -8,44 +8,23 @@ sqlalchemy==2.0.25
 psycopg2-binary==2.9.9
 alembic==1.13.1
 
-# Authentication & Security
+# Authentication
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+# Configuration
 python-dotenv==1.0.0
 pydantic==2.5.3
 pydantic-settings==2.1.0
-email-validator==2.1.0
-
-# Background Tasks
-celery==5.3.4
-redis==5.0.1
 
 # Google APIs
 google-auth==2.26.2
 google-auth-oauthlib==1.2.0
-google-auth-httplib2==0.2.0
 google-api-python-client==2.116.0
 
-# Twilio (WhatsApp)
-twilio==8.11.1
-
-# Data Processing
-pandas==2.1.4
-openpyxl==3.1.2
-xlrd==2.0.1
-
-# NLP & Date Parsing
+# Utilities
 python-dateutil==2.8.2
-spacy==3.7.2
 
-# HTTP & Utilities
-httpx==0.26.0
-requests==2.31.0
-
-# Testing
-pytest==7.4.4
-pytest-asyncio==0.23.3
-
-# Development
-black==23.12.1
-flake8==7.0.0
+# python --version
+# Python 3.11.9
