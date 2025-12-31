@@ -17,3 +17,4 @@ alembic upgrade head
 
 # 7. Start server
 uvicorn app.main:app --reload --port 8000
+

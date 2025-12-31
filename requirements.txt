@@ -6,7 +6,6 @@ python-multipart==0.0.6
 # Database
 sqlalchemy==2.0.25
 psycopg2-binary==2.9.9
-alembic==1.13.1
 
 # Authentication
 python-jose[cryptography]==3.3.0
@@ -25,6 +24,43 @@ google-api-python-client==2.116.0
 
 # Utilities
 python-dateutil==2.8.2
+```
 
-# python --version
-# Python 3.11.9
+---
+
+## Project Structure (Simplified)
+```
+unified-inbox/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── config.py
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── database.py
+│   │   └── security.py
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   └── task.py
+│   │
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   └── task.py
+│   │
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── tasks.py
+│   │   └── google_sync.py
+│   │
+│   └── services/
+│       ├── __init__.py
+│       └── google_service.py
+│
+├── .env
+├── requirements.txt
+└── README.md
